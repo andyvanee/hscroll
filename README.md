@@ -4,7 +4,8 @@ This is some test code to see if I can work around a long-standing bug related t
 scrolling, particularly on Mac which translates `Shift+Scroll` into a horizontal scroll, which
 has no effect in Minecraft, but happens whenever you sneak and scroll your inventory slots.
 
-The entire functionality is in <src/main/java/net/fabricmc/andyvanee/mixin/MinecraftClientMixin.java>
+The entire functionality is in
+[MinecraftClientMixin.java](src/main/java/net/fabricmc/andyvanee/mixin/MinecraftClientMixin.java)
 which basically swaps out the default scroll handler for a custom one which translates
 horizontal scrolling into vertical scrolling.
 
