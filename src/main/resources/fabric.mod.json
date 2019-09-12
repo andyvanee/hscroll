@@ -1,0 +1,29 @@
+{
+    "schemaVersion": 1,
+    "id": "hscroll",
+    "version": "${version}",
+
+    "name": "Horizontal scroll mod",
+    "description": "Enable horizontal scrolling!",
+    "authors": ["andyvanee"],
+    "contact": {
+        "homepage": "https://fabricmc.net/",
+        "sources": "https://github.com/FabricMC/fabric-example-mod"
+    },
+
+    "license": "CC0-1.0",
+    "icon": "assets/hscroll/icon.png",
+
+    "environment": "*",
+    "entrypoints": {
+        "main": ["net.fabricmc.andyvanee.HScroll"]
+    },
+    "mixins": ["hscroll.mixins.json"],
+
+    "depends": {
+        "fabricloader": ">=0.4.0"
+    },
+    "suggests": {
+        "flamingo": "*"
+    }
+}
