@@ -22,6 +22,7 @@ public class MinecraftClientMixin {
 	}
 
 	private void onMouseScroll(long window, double xoffset, double yoffset) {
+		// TODO: implement these as minecraft settings?
 		boolean translateHorizontalScroll = true;
 		double horizontalScrollSensitivity = 1.0D;
 
