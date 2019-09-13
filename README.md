@@ -23,7 +23,20 @@ Using MultiMC - all that's required is to:
 -   Use Minecraft 1.14.4
 -   `Edit Instance`
 -   `Install Fabric`
--   Add fabric-example-mod-1.0.0.jar to 'Loader Mods'
+-   Add hscroll-1.0.0.jar to 'Loader Mods'
+
+## Build
+
+To build the jar file, run the following commands:
+
+```
+# Set up build environment
+gradle wrapper
+# Build the jar file
+./gradlew build
+```
+
+The build output will be in the `build/libs` directory.
 
 ## Setup
 
