@@ -20,10 +20,11 @@ right. Currently it works perfectly for my needs using a Logitech Mouse.
 
 Using MultiMC - all that's required is to:
 
--   Use Minecraft 1.14.4
+-   Download hscroll-1.0.1.jar from the [Releases Page](https://github.com/andyvanee/hscroll/releases)
+-   Use Minecraft 1.15
 -   `Edit Instance`
 -   `Install Fabric`
--   Add hscroll-1.0.0.jar to 'Loader Mods'
+-   Add hscroll-1.0.1.jar to 'Loader Mods'
 
 ## Build
 

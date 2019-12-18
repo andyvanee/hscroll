@@ -21,7 +21,8 @@
     "mixins": ["hscroll.mixins.json"],
 
     "depends": {
-        "fabricloader": ">=0.4.0"
+        "fabricloader": ">=0.7.2",
+        "minecraft": "1.15.x"
     },
     "suggests": {
         "flamingo": "*"
