@@ -24,11 +24,11 @@ Using MultiMC - all that's required is to:
 -   Use Minecraft 1.15
 -   `Edit Instance`
 -   `Install Fabric`
--   Add hscroll-1.0.1.jar to 'Loader Mods'
+-   Add hscroll-1.16.1.001.jar to 'Loader Mods'
 
-## Build
+## For developers
 
-To build the jar file, run the following commands:
+In order to build the jar file, run the following commands:
 
 ```
 # Set up build environment
@@ -38,17 +38,6 @@ gradle wrapper
 ```
 
 The build output will be in the `build/libs` directory.
-
-## Setup
-
-1. Edit build.gradle and mod.json to suit your needs.
-    - The "mixins" object can be removed from mod.json if you do not need to use mixins.
-    - Please replace all occurences of "modid" with your own mod ID - sometimes, a different string may also suffice.
-2. Run the following command:
-
-```
-./gradlew idea
-```
 
 ## License
 
