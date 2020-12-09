@@ -5,10 +5,15 @@ TARGET_VERSIONS=$(patsubst %,$(MAJOR_VERSION).%-$(BUILD_VERSION),$(MINOR_VERSION
 
 SOURCES=$(shell find . -name '*.java')
 
-TARGETS := $(patsubst %,build/libs/%.jar,$(TARGET_VERSIONS))
+BUILD_TARGETS := $(patsubst %,build/libs/%.jar,$(TARGET_VERSIONS))
+TARGETS := $(patsubst %,dist/%.jar,$(TARGET_VERSIONS))
 
 default: $(TARGETS)
 
 # MC version is the $* variable
 build/libs/hscroll-%-$(BUILD_VERSION).jar: $(SOURCES)
 	./gradlew build -Pminecraft_version=$* -Pyarn_mappings=$*+build.1 -Pmod_version=$*-$(BUILD_VERSION)
+
+dist/%.jar: build/libs/%.jar
+	@mkdir -p $(@D)
+	cp $? $@
