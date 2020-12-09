@@ -37,7 +37,20 @@ gradle wrapper
 ./gradlew build
 ```
 
+-   `gradle.properties` can be updated for a specific build using the following tool:
+    <https://modmuss50.me/fabric.html?&version=1.16.4>
+
 The build output will be in the `build/libs` directory.
+
+## TODO
+
+-   The mod works as intended for vertical scrolling, with and without Shift,
+    using all mice tested. It does not, however, behave as well for the Magic
+    Mouse or Trackpad which have a horizontal scroll gesture. For these devices,
+    a left swipe will result in the inventory scrolling right. I assume track
+    balls would behave the same, but I don't have one to test. This situation is
+    unavoidable as far as I can tell, since it's not feasible to distinguish
+    between a Left/Right scroll via trackpad from an Up/Down+Shift scroll.
 
 ## License
 
