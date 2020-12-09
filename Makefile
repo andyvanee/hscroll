@@ -1,25 +1,27 @@
+MAJOR_VERSION=hscroll-1.16
+MINOR_VERSIONS := 1 2 3 4
 BUILD_VERSION=001
-VERSION_PROPS=$(shell find versions -name gradle.properties)
-VERSION_NUMBERS=$(patsubst versions/%/gradle.properties,%,$(VERSION_PROPS))
+TARGET_VERSIONS=$(patsubst %,$(MAJOR_VERSION).%-$(BUILD_VERSION),$(MINOR_VERSIONS))
 
-DIST_TARGETS := $(patsubst %,dist/hscroll-%-$(BUILD_VERSION).jar,$(VERSION_NUMBERS))
-BUILD_TARGETS := $(patsubst dist/hscroll-%-$(BUILD_VERSION).jar,versions/%/build/libs/hscroll.jar,$(DIST_TARGETS))
 SOURCES=$(shell find . -name '*.java')
 
-default: $(DIST_TARGETS)
-	@echo Build complete
+BUILD_TARGETS := $(patsubst %,build/libs/%.jar,$(TARGET_VERSIONS))
+TARGETS := $(patsubst %,dist/%.jar,$(TARGET_VERSIONS))
 
-$(BUILD_TARGETS): build
+default: $(TARGETS)
 
-.PHONY: build
-build:
-	./gradlew build
+build/libs/hscroll-1.16.1-$(BUILD_VERSION).jar: $(SOURCES)
+	./gradlew build -Pminecraft_version=1.16.1 -Pyarn_mappings=1.16.1+build.21 -Ploader_version=0.10.8 -Pfabric_version=0.18.0+build.387-1.16.1 -Pmod_version=1.16.1-$(BUILD_VERSION)
+build/libs/hscroll-1.16.2-$(BUILD_VERSION).jar: $(SOURCES)
+	./gradlew build -Pminecraft_version=1.16.2 -Pyarn_mappings=1.16.2+build.47 -Ploader_version=0.10.8 -Pfabric_version=0.27.1+1.16 -Pmod_version=1.16.2-$(BUILD_VERSION)
+build/libs/hscroll-1.16.3-$(BUILD_VERSION).jar: $(SOURCES)
+	./gradlew build -Pminecraft_version=1.16.3 -Pyarn_mappings=1.16.3+build.47 -Ploader_version=0.10.8 -Pfabric_version=0.27.1+1.16 -Pmod_version=1.16.3-$(BUILD_VERSION)
+build/libs/hscroll-1.16.4-$(BUILD_VERSION).jar: $(SOURCES)
+	./gradlew build -Pminecraft_version=1.16.4 -Pyarn_mappings=1.16.4+build.7 -Ploader_version=0.10.8 -Pfabric_version=0.27.1+1.16 -Pmod_version=1.16.4-$(BUILD_VERSION)
 
-dist/hscroll-%-$(BUILD_VERSION).jar: versions/%/build/libs/hscroll.jar
+dist/%.jar: build/libs/%.jar
 	@mkdir -p $(@D)
-	@cp $? $@
+	cp $? $@
 
-.PHONY: clean
 clean:
-	rm -rf versions/*/build
-	rm -rf versions/*/.gradle
+	rm -rf build dist
