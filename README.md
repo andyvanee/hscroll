@@ -20,11 +20,11 @@ right. Currently it works perfectly for my needs using a Logitech Mouse.
 
 Using MultiMC - all that's required is to:
 
--   Download hscroll-1.16.2.001.jar from the [Releases Page](https://github.com/andyvanee/hscroll/releases)
--   Use Minecraft 1.16.2
+-   Download the jar file for your Minecraft version (eg: MC 1.16.4 -> hscroll-1.16.4.00X.jar) from the
+    [Releases Page](https://github.com/andyvanee/hscroll/releases)
 -   `Edit Instance`
--   `Install Fabric`
--   Add hscroll-1.16.2.001.jar to 'Loader Mods'
+-   `Install Fabric` (tested with fabric loader 0.10.6)
+-   Add the downloaded jar file to 'Loader Mods'
 
 ## For developers
 
@@ -38,6 +38,18 @@ gradle wrapper
 ```
 
 The build output will be in the `build/libs` directory.
+
+See `gradle.properties` for building a specific version.
+
+## TODO
+
+-   The mod works as intended for vertical scrolling, with and without Shift,
+    using all mice tested. It does not, however, behave as well for the Magic
+    Mouse or Trackpad which have a horizontal scroll gesture. For these devices,
+    a left swipe will result in the inventory scrolling right. I assume track
+    balls would behave the same, but I don't have one to test. This situation is
+    unavoidable as far as I can tell, since it's not feasible to distinguish
+    between a Left/Right scroll via trackpad from an Up/Down+Shift scroll.
 
 ## License
 
