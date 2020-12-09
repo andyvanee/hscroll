@@ -1,19 +1,25 @@
-MAJOR_VERSION=hscroll-1.16
-MINOR_VERSIONS := 1 2 3 4
-BUILD_VERSION=002
-TARGET_VERSIONS=$(patsubst %,$(MAJOR_VERSION).%-$(BUILD_VERSION),$(MINOR_VERSIONS))
+BUILD_VERSION=001
+VERSION_PROPS=$(shell find versions -name gradle.properties)
+VERSION_NUMBERS=$(patsubst versions/%/gradle.properties,%,$(VERSION_PROPS))
 
+DIST_TARGETS := $(patsubst %,dist/hscroll-%-$(BUILD_VERSION).jar,$(VERSION_NUMBERS))
+BUILD_TARGETS := $(patsubst dist/hscroll-%-$(BUILD_VERSION).jar,versions/%/build/libs/hscroll.jar,$(DIST_TARGETS))
 SOURCES=$(shell find . -name '*.java')
 
-BUILD_TARGETS := $(patsubst %,build/libs/%.jar,$(TARGET_VERSIONS))
-TARGETS := $(patsubst %,dist/%.jar,$(TARGET_VERSIONS))
+default: $(DIST_TARGETS)
+	@echo Build complete
 
-default: $(TARGETS)
+$(BUILD_TARGETS): build
 
-# MC version is the $* variable
-build/libs/hscroll-%-$(BUILD_VERSION).jar: $(SOURCES)
-	./gradlew build -Pminecraft_version=$* -Pyarn_mappings=$*+build.1 -Pmod_version=$*-$(BUILD_VERSION)
+.PHONY: build
+build:
+	./gradlew build
 
-dist/%.jar: build/libs/%.jar
+dist/hscroll-%-$(BUILD_VERSION).jar: versions/%/build/libs/hscroll.jar
 	@mkdir -p $(@D)
-	cp $? $@
+	@cp $? $@
+
+.PHONY: clean
+clean:
+	rm -rf versions/*/build
+	rm -rf versions/*/.gradle

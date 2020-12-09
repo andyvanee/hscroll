@@ -37,10 +37,9 @@ gradle wrapper
 ./gradlew build
 ```
 
--   `gradle.properties` can be updated for a specific build using the following tool:
-    <https://modmuss50.me/fabric.html?&version=1.16.4>
-
 The build output will be in the `build/libs` directory.
+
+See `gradle.properties` for building a specific version.
 
 ## TODO
 

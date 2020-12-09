@@ -8,3 +8,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+include 'versions:1.16.1'
+include 'versions:1.16.2'
+include 'versions:1.16.3'
+include 'versions:1.16.4'
