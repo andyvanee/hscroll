@@ -27,24 +27,14 @@ public class MinecraftClientMixin {
     }
 
     private void onMouseScroll(long window, double xoffset, double yoffset) {
-        // TODO: implement these as minecraft settings?
-        boolean translateHorizontalScroll = true;
-        double horizontalScrollSensitivity = 1.0D;
-
         if (window == MinecraftClient.getInstance().getWindow().getHandle()) {
-            double delta;
 
-            if (translateHorizontalScroll) {
-                double xvector = xoffset * horizontalScrollSensitivity;
-                double xinput = (this.client.options.discreteMouseScroll ? Math.signum(xvector) : xvector)
-                        * this.client.options.mouseWheelSensitivity;
-                double yinput = (this.client.options.discreteMouseScroll ? Math.signum(yoffset) : yoffset)
-                        * this.client.options.mouseWheelSensitivity;
-                delta = Math.abs(xoffset) < Math.abs(yoffset) ? yinput : xinput;
-            } else {
-                delta = (this.client.options.discreteMouseScroll ? Math.signum(yoffset) : yoffset)
-                        * this.client.options.mouseWheelSensitivity;
+            if (MinecraftClient.IS_SYSTEM_MAC && yoffset == 0) {
+                yoffset = xoffset;
             }
+
+            double delta = (this.client.options.discreteMouseScroll ? Math.signum(yoffset) : yoffset)
+                    * this.client.options.mouseWheelSensitivity;
 
             if (this.client.overlay == null) {
                 Window clientWindow = MinecraftClient.getInstance().getWindow();
