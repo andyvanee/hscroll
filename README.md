@@ -33,6 +33,10 @@ In order to build the jar file, run the following commands:
 ```
 # Set up build environment
 gradle wrapper
+
+# If you want the decompiled sources to browse
+./gradlew genSources
+
 # Build the jar file
 ./gradlew build
 ```
