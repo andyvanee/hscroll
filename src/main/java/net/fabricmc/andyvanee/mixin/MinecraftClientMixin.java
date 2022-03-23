@@ -15,7 +15,7 @@ public class MinecraftClientMixin {
     private double eventDeltaWheel;
     private boolean mixinConfigured;
 
-    @Inject(at = @At("RETURN"), method = "openScreen")
+    @Inject(at = @At("RETURN"), method = "<init>")
     private void init(CallbackInfo info) {
         if (!mixinConfigured) {
             this.client = MinecraftClient.getInstance();
@@ -36,7 +36,7 @@ public class MinecraftClientMixin {
             double delta = (this.client.options.discreteMouseScroll ? Math.signum(yoffset) : yoffset)
                     * this.client.options.mouseWheelSensitivity;
 
-            if (this.client.overlay == null) {
+            if (this.client.getOverlay() == null) {
                 Window clientWindow = MinecraftClient.getInstance().getWindow();
 
                 if (this.client.currentScreen != null) {
@@ -56,18 +56,18 @@ public class MinecraftClientMixin {
                         return;
                     }
 
-                    this.eventDeltaWheel -= (double) currentWheelDelta;
+                    this.eventDeltaWheel -= currentWheelDelta;
                     if (this.client.player.isSpectator()) {
                         if (this.client.inGameHud.getSpectatorHud().isOpen()) {
-                            this.client.inGameHud.getSpectatorHud().cycleSlot((double) (-currentWheelDelta));
+                            this.client.inGameHud.getSpectatorHud().cycleSlot(Math.round(-currentWheelDelta));
                         } else {
                             float j = MathHelper.clamp(
-                                    this.client.player.abilities.getFlySpeed() + currentWheelDelta * 0.005F, 0.0F,
+                                    this.client.player.getAbilities().getFlySpeed() + currentWheelDelta * 0.005F, 0.0F,
                                     0.2F);
-                            this.client.player.abilities.setFlySpeed(j);
+                            this.client.player.getAbilities().setFlySpeed(j);
                         }
                     } else {
-                        this.client.player.inventory.scrollInHotbar((double) currentWheelDelta);
+                        this.client.player.getInventory().scrollInHotbar(currentWheelDelta);
                     }
                 }
             }
