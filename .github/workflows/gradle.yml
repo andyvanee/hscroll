@@ -11,7 +11,7 @@ jobs:
         java: [
           17,    # Current Java LTS & minimum supported by Minecraft
         ]
-        os: [ ubuntu-20.04 ]
+        os: [ ubuntu-20.04 ] # You can add windows here if you want to build on that OS as well
     runs-on: ${{ matrix.os }}
     steps:
       - name: checkout repository
