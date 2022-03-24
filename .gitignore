@@ -4,6 +4,11 @@
 build/
 out/
 classes/
+gradle/wrapper/gradle-wrapper.jar
+
+# eclipse
+
+*.launch
 
 # idea
 
@@ -19,6 +24,10 @@ classes/
 bin/
 .classpath
 .project
+
+# macos
+
+*.DS_Store
 
 # fabric
 

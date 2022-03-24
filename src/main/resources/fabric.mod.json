@@ -21,8 +21,10 @@
     "mixins": ["hscroll.mixins.json"],
 
     "depends": {
-        "fabricloader": ">=0.7.4",
-        "minecraft": "1.16.x"
+        "fabricloader": ">=0.13.3",
+        "fabric": "*",
+        "minecraft": "1.18.x",
+        "java": ">=17"
     },
     "suggests": {
         "flamingo": "*"
