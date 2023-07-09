@@ -1,5 +1,11 @@
 # HScroll Fabric Mod
 
+> ** Unmaintained ** - I don't play Minecraft enough to warrant maintaining this mod and building for new releases.
+> 
+> There are links to some workarounds in [the issue thread here](https://bugs.mojang.com/browse/MC-121772) and the best workaround seems to be [MCMacOSInputFixes](https://github.com/hamarb123/MCMacOSInputFixes).
+
+## Original README
+
 This is some test code to see if I can work around a long-standing bug related to horizontal
 scrolling, particularly on Mac which translates `Shift+Scroll` into a horizontal scroll, which
 has no effect in Minecraft, but happens whenever you sneak and scroll your inventory slots.
