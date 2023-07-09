@@ -1,6 +1,6 @@
 # HScroll Fabric Mod
 
-> ** Unmaintained ** - I don't play Minecraft enough to warrant maintaining this mod and building for new releases.
+> **This code is not maintained** - I don't play Minecraft enough to warrant maintaining this mod and building new releases.
 > 
 > There are links to some workarounds in [the issue thread here](https://bugs.mojang.com/browse/MC-121772) and the best workaround seems to be [MCMacOSInputFixes](https://github.com/hamarb123/MCMacOSInputFixes).
 
